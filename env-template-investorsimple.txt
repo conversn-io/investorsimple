@@ -42,6 +42,18 @@ INVESTORSIMPLE_GHL_WEBHOOK=https://services.leadconnectorhq.com/hooks/your-inves
 GHL_WEBHOOK=https://services.leadconnectorhq.com/hooks/your-investorsimple-webhook
 
 # =============================================================================
+# OTP / SMS DELIVERY
+# =============================================================================
+# Twilio direct SMS delivery (recommended for production OTP)
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_FROM_NUMBER=+1XXXXXXXXXX
+
+# Optional: enable debug mode only in non-production to return OTP in API response
+INVESTORSIMPLE_OTP_DEBUG=false
+NEXT_PUBLIC_OTP_DEBUG=false
+
+# =============================================================================
 # API / SECURITY
 # =============================================================================
 REVALIDATION_SECRET=your_revalidation_secret

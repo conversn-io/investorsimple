@@ -1,7 +1,9 @@
 import { NextRequest } from 'next/server'
 import { callreadyQuizDb } from '@/lib/callready-quiz-db'
 import { createCorsResponse, handleCorsOptions } from '@/lib/cors-headers'
-import { formatE164, formatPhoneForGHL } from '@/utils/phone-utils'
+import { formatE164 } from '@/utils/phone-utils'
+import { buildGhlPayload } from '@/lib/ghl-mapping'
+import { deliverWebhookWithRetry } from '@/lib/webhook-delivery'
 
 const SITE_KEY = 'investorsimple.org'
 
@@ -49,39 +51,29 @@ export async function POST(request: NextRequest) {
       .update({ is_verified: true, status: 'verified', verified_at: new Date().toISOString(), site_key: SITE_KEY })
       .eq('id', lead.id)
 
-    const contactPayload = {
-      firstName: lead.contact?.first_name || body.firstName || '',
-      lastName: lead.contact?.last_name || body.lastName || '',
-      email: lead.contact?.email || body.email || '',
-      phone: formatPhoneForGHL(phone),
-    }
-
     const webhookUrl = process.env.INVESTORSIMPLE_GHL_WEBHOOK || process.env.GHL_WEBHOOK || ''
-    let webhook = { success: false, status: 0 }
+    let webhook = { success: false, status: 0, attempts: 0, error: '' }
 
     if (webhookUrl) {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contact: contactPayload,
-          lead_source: 'InvestorSimple',
-          source: 'investorsimple_quiz',
-          site_key: SITE_KEY,
-          funnel_type: lead.funnel_type || 'investor_quiz',
-          session_id: lead.session_id,
-          quiz_answers: lead.quiz_answers || {},
-          utm: {
-            source: lead.utm_source,
-            medium: lead.utm_medium,
-            campaign: lead.utm_campaign,
-          },
-        }),
-      })
-      webhook = { success: response.ok, status: response.status }
+      const payload = buildGhlPayload({ lead, body: { ...body, phone }, siteKey: SITE_KEY })
+      const result = await deliverWebhookWithRetry(webhookUrl, payload, 3)
+      webhook = {
+        success: result.success,
+        status: result.status,
+        attempts: result.attempts,
+        error: result.error || '',
+      }
     }
 
-    return createCorsResponse({ success: true, verified: true, sent_to_ghl: webhook.success, webhook_status: webhook.status, lead_id: lead.id })
+    return createCorsResponse({
+      success: true,
+      verified: true,
+      sent_to_ghl: webhook.success,
+      webhook_status: webhook.status,
+      webhook_attempts: webhook.attempts,
+      webhook_error: webhook.error || null,
+      lead_id: lead.id,
+    })
   } catch (error) {
     console.error('verify otp and send ghl error', error)
     return createCorsResponse({ error: 'Internal server error' }, 500)

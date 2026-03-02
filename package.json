@@ -12,7 +12,8 @@
     "migrate:rollback": "tsx src/scripts/migrate-database.ts rollback",
     "import:content": "tsx src/scripts/import-content.ts",
     "import:clear": "tsx src/scripts/import-content.ts clear",
-    "migrate:all": "npm run migrate:db && npm run import:content"
+    "migrate:all": "npm run migrate:db && npm run import:content",
+    "test:phase3": "node scripts/test-phase3-flow.mjs"
   },
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.13",
