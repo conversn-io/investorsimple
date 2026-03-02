@@ -1,6 +1,7 @@
 @import './theme/style.css';
 @import './theme/about.css';
 @import './theme/assets.css';
+@import './theme/quiz.css';
 
 :root {
   color-scheme: light;
