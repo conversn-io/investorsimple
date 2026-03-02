@@ -46,8 +46,8 @@ export function SiteHeader() {
               <li><Link href="/assets/infrastructure">Infrastructure</Link></li>
             </ul>
           </li>
-          <li><a href="/#insights" className="nav-link">Insights</a></li>
-          <li><a href="/#tools" className="nav-link">Tools</a></li>
+          <li><Link href="/articles" className="nav-link">Insights</Link></li>
+          <li><Link href="/quiz" className="nav-link">Quiz</Link></li>
           <li><Link href="/about" className="nav-link">About</Link></li>
         </ul>
 
