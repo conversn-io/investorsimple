@@ -4,12 +4,13 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 type LeadFunnelFormProps = {
+  slug: 'kit-guide' | 'web-conference'
   funnelType: string
   ctaLabel: string
   thankYouPath: string
 }
 
-export function LeadFunnelForm({ funnelType, ctaLabel, thankYouPath }: LeadFunnelFormProps) {
+export function LeadFunnelForm({ slug, funnelType, ctaLabel, thankYouPath }: LeadFunnelFormProps) {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -59,8 +60,28 @@ export function LeadFunnelForm({ funnelType, ctaLabel, thankYouPath }: LeadFunne
       return
     }
 
-    const leadId = json.lead_id ? `?lead=${encodeURIComponent(String(json.lead_id))}` : ''
-    router.push(`${thankYouPath}${leadId}`)
+    const sendOtp = await fetch('/api/otp/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: payload.phoneNumber }),
+    })
+
+    const sendOtpJson = await sendOtp.json().catch(() => ({}))
+    if (!sendOtp.ok) {
+      setError(sendOtpJson.error || 'Lead saved, but verification code could not be sent.')
+      setIsSubmitting(false)
+      return
+    }
+
+    const params = new URLSearchParams({
+      phone: payload.phoneNumber,
+      session: sessionId,
+      next: thankYouPath,
+    })
+
+    if (json.lead_id) params.set('lead', String(json.lead_id))
+
+    router.push(`/funnels/${slug}/verify?${params.toString()}`)
   }
 
   return (

@@ -186,6 +186,37 @@
   flex-wrap: wrap;
 }
 
+.wl-verify-card {
+  max-width: 640px;
+}
+
+.wl-verify-form {
+  margin-top: 14px;
+}
+
+.wl-verify-label {
+  font-size: 0.92rem;
+  color: #33455f;
+  font-weight: 600;
+}
+
+.wl-verify-message {
+  margin: 10px 0 0;
+  color: #3f5575;
+  font-size: 0.9rem;
+}
+
+.wl-resend-btn {
+  background: transparent;
+  border: none;
+  color: #33527a;
+  text-decoration: underline;
+  font-size: 0.88rem;
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+}
+
 @media (max-width: 900px) {
   .wl-shell {
     grid-template-columns: 1fr;
