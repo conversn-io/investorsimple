@@ -2,6 +2,7 @@
 @import './theme/about.css';
 @import './theme/assets.css';
 @import './theme/quiz.css';
+@import './theme/funnels.css';
 
 :root {
   color-scheme: light;

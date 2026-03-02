@@ -1,0 +1,197 @@
+.wl-page-wrap {
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 44%);
+  min-height: 100vh;
+}
+
+.wl-hero {
+  padding: 118px 0 88px;
+}
+
+.wl-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.wl-copy h1 {
+  font-family: var(--font-serif);
+  color: var(--slate-navy);
+  line-height: 1.12;
+  margin: 0 0 14px;
+}
+
+.wl-copy > p {
+  margin: 0 0 18px;
+  color: #4e5f79;
+  font-size: 1.05rem;
+}
+
+.wl-kicker {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--investor-gold);
+  margin-bottom: 12px;
+}
+
+.wl-benefits {
+  border: 1px solid #e2e8f1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.wl-benefits h3 {
+  margin: 0 0 10px;
+  font-size: 1.12rem;
+  color: var(--slate-navy);
+  font-family: var(--font-sans);
+}
+
+.wl-benefits ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.wl-benefits li {
+  margin: 0 0 8px;
+  color: #2c3a51;
+  line-height: 1.45;
+}
+
+.wl-panel {
+  border: 1px solid #dfe6f0;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(14, 19, 36, 0.1);
+}
+
+.wl-image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.wl-form {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wl-form input,
+.wl-form select {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #ccd6e5;
+  border-radius: 9px;
+  padding: 0 12px;
+  font-size: 0.96rem;
+}
+
+.wl-form input:focus,
+.wl-form select:focus {
+  outline: 2px solid rgba(201, 162, 77, 0.3);
+  border-color: var(--investor-gold);
+}
+
+.wl-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.wl-submit {
+  margin-top: 2px;
+  min-height: 48px;
+}
+
+.wl-disclaimer {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.wl-error {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #b42318;
+}
+
+.wl-thankyou-wrap {
+  min-height: 100vh;
+  padding: 118px 20px 80px;
+  background: linear-gradient(180deg, #f6f9fd 0%, #ffffff 50%);
+}
+
+.wl-thankyou-card {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid #dfe7f2;
+  border-radius: 16px;
+  background: #fff;
+  padding: 26px;
+  box-shadow: 0 14px 30px rgba(14, 19, 36, 0.08);
+}
+
+.wl-thankyou-card h1 {
+  margin: 0 0 10px;
+  color: var(--slate-navy);
+  font-family: var(--font-serif);
+}
+
+.wl-thankyou-card > p {
+  margin: 0;
+  color: #4f607b;
+}
+
+.wl-next-steps {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e4ebf5;
+}
+
+.wl-next-steps h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  color: var(--slate-navy);
+  font-size: 1.05rem;
+}
+
+.wl-next-steps ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.wl-next-steps li {
+  margin-bottom: 8px;
+  color: #2f3f59;
+}
+
+.wl-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .wl-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .wl-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
