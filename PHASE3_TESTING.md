@@ -16,6 +16,9 @@ BASE_URL=https://investorsimple.org npm run test:phase3
 
 # if OTP debug disabled, provide a known OTP from SMS
 BASE_URL=https://investorsimple.org TEST_PHONE=+15555550123 TEST_OTP=123456 npm run test:phase3
+
+# staging bypass token (skips OTP send/verify code check)
+BASE_URL=https://investorsimple.org TEST_PHONE=+15555550123 TEST_BYPASS_TOKEN=your_long_random_token npm run test:phase3
 ```
 
 ## What it validates
@@ -24,3 +27,8 @@ BASE_URL=https://investorsimple.org TEST_PHONE=+15555550123 TEST_OTP=123456 npm 
 3. `POST /api/leads/verify-otp-and-send-to-ghl`
 
 The script exits non-zero on any failure.
+
+## OTP bypass safety
+- `INVESTORSIMPLE_OTP_BYPASS_ENABLED=true` is required
+- Token must match `INVESTORSIMPLE_OTP_BYPASS_TOKEN`
+- Bypass is blocked in production unless `INVESTORSIMPLE_OTP_BYPASS_ALLOW_PRODUCTION=true`

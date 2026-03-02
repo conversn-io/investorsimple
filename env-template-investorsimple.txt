@@ -53,6 +53,15 @@ TWILIO_FROM_NUMBER=+1XXXXXXXXXX
 INVESTORSIMPLE_OTP_DEBUG=false
 NEXT_PUBLIC_OTP_DEBUG=false
 
+# Optional: staging-only OTP bypass token (for QA automation)
+# Requires INVESTORSIMPLE_OTP_BYPASS_ENABLED=true and matching token in:
+# - header: x-otp-bypass-token, or
+# - body: otpBypassToken
+INVESTORSIMPLE_OTP_BYPASS_ENABLED=false
+INVESTORSIMPLE_OTP_BYPASS_TOKEN=your_long_random_token
+# Keep false for production safety unless explicitly needed
+INVESTORSIMPLE_OTP_BYPASS_ALLOW_PRODUCTION=false
+
 # =============================================================================
 # API / SECURITY
 # =============================================================================

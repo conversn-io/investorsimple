@@ -4,6 +4,7 @@ import { createCorsResponse, handleCorsOptions } from '@/lib/cors-headers'
 import { formatE164 } from '@/utils/phone-utils'
 import { buildGhlPayload } from '@/lib/ghl-mapping'
 import { deliverWebhookWithRetry } from '@/lib/webhook-delivery'
+import { evaluateOtpBypass } from '@/lib/otp-bypass'
 
 const SITE_KEY = 'investorsimple.org'
 
@@ -17,23 +18,30 @@ export async function POST(request: NextRequest) {
     const phone = formatE164(body.phone)
     const otp = String(body.otp || '')
     const sessionId = body.sessionId || null
+    const bypass = evaluateOtpBypass(request, { otpBypassToken: body.otpBypassToken })
 
-    if (!phone || !otp) {
-      return createCorsResponse({ error: 'Phone and OTP are required' }, 400)
+    if (!phone) {
+      return createCorsResponse({ error: 'Phone is required' }, 400)
     }
 
-    const { data: otpRow } = await callreadyQuizDb
-      .from('otp_verifications')
-      .select('*')
-      .eq('phone_number', phone)
-      .eq('otp_code', otp)
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+    if (!bypass.bypassed) {
+      if (!otp) {
+        return createCorsResponse({ error: 'OTP is required' }, 400)
+      }
 
-    if (!otpRow) return createCorsResponse({ success: false, verified: false, error: 'Invalid OTP' }, 400)
-    if (new Date(otpRow.expires_at).getTime() < Date.now()) {
-      return createCorsResponse({ success: false, verified: false, error: 'OTP expired' }, 400)
+      const { data: otpRow } = await callreadyQuizDb
+        .from('otp_verifications')
+        .select('*')
+        .eq('phone_number', phone)
+        .eq('otp_code', otp)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+
+      if (!otpRow) return createCorsResponse({ success: false, verified: false, error: 'Invalid OTP' }, 400)
+      if (new Date(otpRow.expires_at).getTime() < Date.now()) {
+        return createCorsResponse({ success: false, verified: false, error: 'OTP expired' }, 400)
+      }
     }
 
     const { data: lead } = await callreadyQuizDb
@@ -72,6 +80,7 @@ export async function POST(request: NextRequest) {
       webhook_status: webhook.status,
       webhook_attempts: webhook.attempts,
       webhook_error: webhook.error || null,
+      bypassed: bypass.bypassed,
       lead_id: lead.id,
     })
   } catch (error) {
