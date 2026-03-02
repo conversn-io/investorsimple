@@ -29,6 +29,7 @@ export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
                 <img src={config.heroImage} alt={config.headline} />
               </div>
               <LeadFunnelForm
+                slug={config.slug}
                 funnelType={config.funnelType}
                 ctaLabel={config.cta}
                 thankYouPath={config.thankYouPath}
