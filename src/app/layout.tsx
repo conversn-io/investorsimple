@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: 'InvestorSimple',
   description:
     'InvestorSimple - Asymmetric opportunity, intelligently contained. Alternative investment education with institutional-quality insights.',
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({

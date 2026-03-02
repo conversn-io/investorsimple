@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-col">
-            <img src="https://www.genspark.ai/api/files/s/jEvdWYbv" alt="InvestorSimple" className="footer-logo" />
+            <img src="/InvestorSimple-Logo-removebg-preview.png" alt="InvestorSimple" className="footer-logo" />
             <p className="footer-tagline">Asymmetric opportunity,<br />intelligently contained.</p>
             <div className="social-links">
               <a href="#twitter" aria-label="Twitter"><i className="fab fa-twitter" /></a>

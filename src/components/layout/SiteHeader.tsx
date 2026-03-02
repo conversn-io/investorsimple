@@ -10,8 +10,8 @@ export function SiteHeader() {
     <nav className="navbar" id="navbar">
       <div className="nav-container">
         <Link href="/" className="nav-logo" aria-label="InvestorSimple home">
-          <img src="https://www.genspark.ai/api/files/s/CPNKYPxL" alt="InvestorSimple" className="logo-dark" />
-          <img src="https://www.genspark.ai/api/files/s/jEvdWYbv" alt="InvestorSimple" className="logo-light" />
+          <img src="/InvestorSimple-Light-Logo-removebg-preview.png" alt="InvestorSimple" className="logo-dark" />
+          <img src="/InvestorSimple-Logo-removebg-preview.png" alt="InvestorSimple" className="logo-light" />
         </Link>
 
         <button
