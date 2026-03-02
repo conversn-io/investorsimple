@@ -1,0 +1,57 @@
+# =============================================================================
+# INVESTORSIMPLE PLATFORM ENVIRONMENT VARIABLES
+# =============================================================================
+
+# =============================================================================
+# PUBLISHARE CMS SUPABASE
+# =============================================================================
+NEXT_PUBLIC_SUPABASE_URL=your_publishare_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_publishare_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_publishare_supabase_service_role_key
+NEXT_PUBLIC_PUBLISHARE_SITE_ID=investorsimple
+PUBLISHARE_SITE_ID=investorsimple
+
+# =============================================================================
+# CALLREADY QUIZ DATABASE
+# =============================================================================
+NEXT_PUBLIC_SUPABASE_QUIZ_URL=https://jqjftrlnyysqcwbbigpw.supabase.co
+NEXT_PUBLIC_SUPABASE_QUIZ_ANON_KEY=your_callready_quiz_anon_key
+SUPABASE_QUIZ_URL=https://jqjftrlnyysqcwbbigpw.supabase.co
+SUPABASE_QUIZ_ANON_KEY=your_callready_quiz_anon_key
+SUPABASE_QUIZ_SERVICE_ROLE_KEY=your_callready_quiz_service_role_key
+
+# =============================================================================
+# TRACKING / SITE SETTINGS
+# =============================================================================
+NEXT_PUBLIC_SITE_URL_INVESTORSIMPLE=https://investorsimple.org
+NEXT_PUBLIC_SITE_URL=https://investorsimple.org
+NEXT_PUBLIC_SITE_KEY=investorsimple.org
+NEXT_PUBLIC_GA4_MEASUREMENT_ID_INVESTORSIMPLE=G-XXXXXXXXXX
+NEXT_PUBLIC_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GTM_CONTAINER_ID_INVESTORSIMPLE=GTM-XXXXXXX
+NEXT_PUBLIC_GTM_CONTAINER_ID=GTM-XXXXXXX
+NEXT_PUBLIC_META_PIXEL_ID_INVESTORSIMPLE=your_meta_pixel_id
+NEXT_PUBLIC_META_PIXEL_ID=your_meta_pixel_id
+META_CAPI_ACCESS_TOKEN_INVESTORSIMPLE=your_meta_capi_access_token
+META_CAPI_ACCESS_TOKEN=your_meta_capi_access_token
+
+# =============================================================================
+# LEAD DELIVERY (GHL)
+# =============================================================================
+INVESTORSIMPLE_GHL_WEBHOOK=https://services.leadconnectorhq.com/hooks/your-investorsimple-webhook
+GHL_WEBHOOK=https://services.leadconnectorhq.com/hooks/your-investorsimple-webhook
+
+# =============================================================================
+# API / SECURITY
+# =============================================================================
+REVALIDATION_SECRET=your_revalidation_secret
+API_SECRET_KEY=your_api_secret_key
+JWT_SECRET=your_jwt_secret
+
+# =============================================================================
+# FEATURE FLAGS
+# =============================================================================
+ENABLE_OTP_VERIFICATION=true
+ENABLE_LEAD_DELIVERY=true
+ENABLE_UTM_TRACKING=true
+ENABLE_ANALYTICS=true
