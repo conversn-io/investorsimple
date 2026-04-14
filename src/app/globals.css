@@ -3,6 +3,7 @@
 @import './theme/assets.css';
 @import './theme/quiz.css';
 @import './theme/funnels.css';
+@import './theme/iul-quiz.css';
 
 :root {
   color-scheme: light;

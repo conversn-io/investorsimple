@@ -1,0 +1,447 @@
+/* ========================================
+   IUL Strategy Finder — Quiz Theme
+   ======================================== */
+
+.iul-page {
+  min-height: 100vh;
+  background: var(--slate-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.iul-shell {
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+}
+
+/* ---- Progress Bar ---- */
+
+.iul-progress {
+  margin-bottom: 24px;
+}
+
+.iul-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+}
+
+.iul-progress-track {
+  height: 4px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.iul-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--investor-gold) 0%, #e2bf75 100%);
+  transition: width 280ms ease;
+}
+
+/* ---- Card ---- */
+
+.iul-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  animation: iul-fade-in 280ms ease both;
+}
+
+@keyframes iul-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---- Headings ---- */
+
+.iul-card h2 {
+  margin: 0 0 8px;
+  color: var(--slate-navy);
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  line-height: 1.2;
+}
+
+.iul-card .iul-sub {
+  margin: 0 0 28px;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+/* ---- Tile Buttons ---- */
+
+.iul-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.iul-tile {
+  width: 100%;
+  text-align: left;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
+  background: var(--white);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 160ms ease;
+}
+
+.iul-tile:hover {
+  border-color: var(--investor-gold);
+  background: #fdf9f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 162, 77, 0.12);
+}
+
+.iul-tile.is-selected {
+  border-color: var(--investor-gold);
+  background: var(--investor-gold);
+  color: var(--white);
+}
+
+.iul-tile-arrow {
+  font-size: 0.85rem;
+  opacity: 0.4;
+  transition: opacity 160ms ease;
+}
+
+.iul-tile:hover .iul-tile-arrow {
+  opacity: 0.8;
+}
+
+.iul-tile.is-selected .iul-tile-arrow {
+  opacity: 1;
+}
+
+/* ---- Multi-select tiles ---- */
+
+.iul-tile-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--border-color);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 160ms ease;
+  font-size: 0.7rem;
+  color: transparent;
+}
+
+.iul-tile.is-selected .iul-tile-check {
+  border-color: var(--investor-gold);
+  background: var(--investor-gold);
+  color: var(--white);
+}
+
+/* ---- Form Fields ---- */
+
+.iul-form-group {
+  margin-bottom: 16px;
+}
+
+.iul-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.iul-input {
+  width: 100%;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  transition: border-color 200ms ease;
+  background: var(--white);
+}
+
+.iul-input:focus {
+  outline: none;
+  border-color: var(--investor-gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.15);
+}
+
+.iul-input::placeholder {
+  color: #a0a8b8;
+}
+
+.iul-select {
+  width: 100%;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 200ms ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%236B7280' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.iul-select:focus {
+  outline: none;
+  border-color: var(--investor-gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.15);
+}
+
+/* Phone row */
+
+.iul-phone-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+}
+
+/* ---- CTA Button ---- */
+
+.iul-cta {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background: var(--investor-gold);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 200ms ease;
+  margin-top: 8px;
+}
+
+.iul-cta:hover {
+  background: #B8913C;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(201, 162, 77, 0.35);
+}
+
+.iul-cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---- Secondary link ---- */
+
+.iul-link-btn {
+  background: none;
+  border: none;
+  color: var(--investor-gold);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 16px;
+  display: inline-block;
+  transition: color 200ms ease;
+}
+
+.iul-link-btn:hover {
+  color: #B8913C;
+}
+
+/* ---- Error ---- */
+
+.iul-error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* ---- TCPA ---- */
+
+.iul-tcpa {
+  margin-top: 16px;
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- OTP Input ---- */
+
+.iul-otp-input {
+  width: 100%;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  height: 56px;
+  padding: 0 14px;
+  font-size: 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-align: center;
+  color: var(--text-primary);
+  transition: border-color 200ms ease;
+}
+
+.iul-otp-input:focus {
+  outline: none;
+  border-color: var(--investor-gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.15);
+}
+
+/* ---- Disqualified ---- */
+
+.iul-disqualified {
+  text-align: center;
+}
+
+.iul-disqualified h2 {
+  color: var(--slate-navy);
+  margin-bottom: 20px;
+}
+
+.iul-disqualified p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.iul-disqualified a {
+  color: var(--investor-gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.iul-disqualified a:hover {
+  color: #B8913C;
+}
+
+/* ---- Thank You ---- */
+
+.iul-thankyou {
+  text-align: center;
+}
+
+.iul-thankyou h2 {
+  margin-bottom: 16px;
+}
+
+.iul-thankyou .iul-sub {
+  margin-bottom: 32px;
+}
+
+.iul-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  text-align: left;
+}
+
+.iul-steps-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.iul-steps-list li:last-child {
+  border-bottom: none;
+}
+
+.iul-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--investor-gold);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iul-closing {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* ---- Intro screen ---- */
+
+.iul-intro {
+  text-align: center;
+}
+
+.iul-intro h2 {
+  font-size: 1.85rem;
+}
+
+.iul-intro .iul-sub {
+  margin-bottom: 32px;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+  .iul-page {
+    padding: 24px 16px;
+    align-items: flex-start;
+    padding-top: 48px;
+  }
+
+  .iul-card {
+    padding: 28px 22px;
+  }
+
+  .iul-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .iul-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .iul-intro h2 {
+    font-size: 1.5rem;
+  }
+}
