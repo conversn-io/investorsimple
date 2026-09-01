@@ -27,7 +27,7 @@ export const funnelConfigs: Record<FunnelConfig['slug'], FunnelConfig> = {
     cta: 'Send Me the Free Guide',
     thankYouPath: '/funnels/kit-guide/thank-you',
     heroImage:
-      'https://images.unsplash.com/photo-1554224155-3a589877462f?w=1200&h=900&fit=crop',
+      'https://jqjftrlnyysqcwbbigpw.supabase.co/storage/v1/object/public/funnel-screenshots/gold-ira-guide-book.png',
   },
   'web-conference': {
     slug: 'web-conference',
