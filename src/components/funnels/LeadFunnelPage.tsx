@@ -6,9 +6,11 @@ export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
   return (
     <>
       <nav className="wl-nav">
-        <Link href="/" aria-label="InvestorSimple home">
-          <img src="/InvestorSimple-Logo.png" alt="InvestorSimple" className="wl-nav-logo" />
-        </Link>
+        <div className="wl-nav-inner">
+          <Link href="/" aria-label="InvestorSimple home">
+            <img src="/InvestorSimple-White-Logo.png" alt="InvestorSimple" className="wl-nav-logo" />
+          </Link>
+        </div>
       </nav>
       <main className="wl-page-wrap">
         <section className="wl-hero">
@@ -41,6 +43,15 @@ export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
           </div>
         </section>
       </main>
+      <footer className="wl-footer">
+        <div className="wl-footer-inner">
+          <p>&copy; 2026 InvestorSimple. All rights reserved.</p>
+          <div className="wl-footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Use</a>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }

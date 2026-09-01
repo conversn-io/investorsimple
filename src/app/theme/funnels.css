@@ -1,14 +1,58 @@
 .wl-nav {
+  background: var(--slate-navy);
+  border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+}
+
+.wl-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
-  padding: 14px 24px;
-  background: #fff;
-  border-bottom: 1px solid #e8edf4;
 }
 
 .wl-nav-logo {
-  height: 36px;
+  height: 40px;
   width: auto;
+}
+
+.wl-footer {
+  background: var(--slate-navy);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 20px 0;
+  border-top: 1px solid rgba(201, 162, 77, 0.2);
+}
+
+.wl-footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wl-footer-inner p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.wl-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.wl-footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.wl-footer-links a:hover {
+  color: var(--investor-gold);
 }
 
 .wl-page-wrap {
