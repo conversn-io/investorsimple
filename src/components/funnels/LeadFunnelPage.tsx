@@ -8,7 +8,7 @@ export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
       <nav className="wl-nav">
         <div className="wl-nav-inner">
           <Link href="/" aria-label="InvestorSimple home">
-            <img src="/InvestorSimple-White-Logo.png" alt="InvestorSimple" className="wl-nav-logo" />
+            <img src="/InvestorSimple-Logo.png" alt="InvestorSimple" className="wl-nav-logo" />
           </Link>
         </div>
       </nav>
