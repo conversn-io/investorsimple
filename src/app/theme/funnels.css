@@ -1,10 +1,22 @@
+.wl-nav {
+  display: flex;
+  align-items: center;
+  padding: 14px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e8edf4;
+}
+
+.wl-nav-logo {
+  height: 36px;
+  width: auto;
+}
+
 .wl-page-wrap {
   background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 44%);
-  min-height: 100vh;
 }
 
 .wl-hero {
-  padding: 118px 0 18px;
+  padding: 32px 0 18px;
 }
 
 .wl-shell {

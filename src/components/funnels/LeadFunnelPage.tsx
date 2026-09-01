@@ -1,12 +1,15 @@
+import Link from 'next/link'
 import { LeadFunnelForm } from '@/components/funnels/LeadFunnelForm'
-import { SiteFooter } from '@/components/layout/SiteFooter'
-import { SiteHeader } from '@/components/layout/SiteHeader'
 import { FunnelConfig } from '@/content/funnels'
 
 export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
   return (
     <>
-      <SiteHeader />
+      <nav className="wl-nav">
+        <Link href="/" aria-label="InvestorSimple home">
+          <img src="/InvestorSimple-Logo.png" alt="InvestorSimple" className="wl-nav-logo" />
+        </Link>
+      </nav>
       <main className="wl-page-wrap">
         <section className="wl-hero">
           <div className="wl-shell">
@@ -38,7 +41,6 @@ export function LeadFunnelPage({ config }: { config: FunnelConfig }) {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </>
   )
 }
