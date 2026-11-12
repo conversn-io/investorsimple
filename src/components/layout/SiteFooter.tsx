@@ -38,10 +38,10 @@ export function SiteFooter() {
           <div className="footer-col">
             <h4>Company</h4>
             <ul className="footer-links">
+              <li><Link href="/articles">Insights</Link></li>
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/about#thesis">Our Thesis</Link></li>
               <li><a href="#standards">Editorial Standards</a></li>
-              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
         </div>
